@@ -16,8 +16,8 @@ const unsigned int RESTART_NUM = 0x5FFFFFu;//primitive restart number
 struct Vertex
 {
 	glm::vec3 Position_;
-	GLfloat Weight_;
 	GLuint LineId_;
+	GLfloat Weight_;
 	Vertex(GLfloat x, GLfloat y, GLfloat z): Position_(glm::vec3(x, y, z)) {}
 };
 
@@ -237,6 +237,18 @@ void Lines::setupModel()
 			offset += sz;
 		}
 	}
+	//vertex Positon
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+	glEnableVertexAttribArray(0);
+	//vertex LineId
+	glVertexAttribPointer(1, 1, GL_UNSIGNED_INT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, LineId_));
+	glEnableVertexAttribArray(1);
+	//vertex Weight
+	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Weight_));
+	glEnableVertexAttribArray(2);
+
+	//unbind VAO
+	glBindVertexArray(0);
 }
 
 #endif
