@@ -19,4 +19,9 @@ const unsigned int SCR_HEIGHT = SCR_WIDTH;
 const unsigned int TOTAL_PIXELS = SCR_WIDTH * SCR_HEIGHT;
 #pragma endregion
 
+#pragma region rendering related
+const unsigned int MAX_FRAGMENT_NUM = (unsigned int)1e7;
+const unsigned int RESTART_NUM = 0x5FFFFFu;//primitive restart number
+#pragma endregion
+
 #endif // !COMMONVARS_H
